@@ -36,6 +36,46 @@ const student = new mongoose.Schema({
 	gender: String,
 });
 
-const Userdb = mongoose.model("userdb", student);
+const company = new mongoose.Schema({
+	name: {
+		type: String,
+		required: true,
+	},
+	email: {
+		type: String,
+		required: true,
+		unique: true,
+	},
+	password: {
+		type: String,
+		required: true,
+	},
+	confirm_password: {
+		type: String,
+		required: true,
+	},
+	cpi: {
+		type: Number,
+		required: true,
+	},
+	website: {
+		type: String,
+		required: true,
+	},
+	position: {
+		type: String,
+		required: true,
+	},
+	package: {
+		type: String,
+		required: true,
+	},
+	tech_stack: {
+		type: String,
+	},
+});
 
-module.exports = Userdb;
+const Studentdb = mongoose.model("studentdb", student);
+const Companydb = mongoose.model("companydb", company);
+
+module.exports = { Studentdb, Companydb };
