@@ -6,16 +6,32 @@
 			<div class="left">
 				<div class="top_link"><a href="/"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Return home</a></div>
 				<div class="contact">
-					<form action="">
+					<form action="/api/users" method="post" id="add-student">
 						<h3>Registration Form</h3>
-						<input type="text" placeholder="FullName" required>
+						<input type="text" placeholder="Full-Name" required>
 						<input type="email" placeholder="Email" required>
 						<input type="password" placeholder="Password" required>
 						<input type="password" placeholder="Confirm Password" required>
 						<input type="year" placeholder="Batch year" required>
-						<input type="float" placeholder="CPI" required>
+						<input type="number" step="0.01" placeholder="CPI" required>
 						<input type="number" placeholder="Age" required>
 						<input type="text" placeholder="Tech Stack" required>
+						<div class="form-group">
+							<label for="gender" >Gender</label>
+							<div id="GenderContainer" name="GenderContainer" class="GenderOptions" required>
+								
+								<div id="male" class="floatBlock">
+									<input type="radio" id="radio-2" name="gender" value="Male" />
+									<label for="radio-2" class="radio-label">Male</label>
+								</div>
+
+								<div id="female" class="floatBlock">
+									<input type="radio" id="radio-3" name="gender" value="Female" />
+								<label for="radio-3" class="radio-label">Female</label>
+								</div>
+
+							</div>
+						</div>
 						<button class="submit">Submit Form</button>
             <p>Already signed up?</p><a href="/student_login">Login</a>
 					</form>

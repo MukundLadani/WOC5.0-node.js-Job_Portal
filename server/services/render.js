@@ -31,6 +31,7 @@ exports.student = (req, res) => {
 exports.company_login = (req, res) => {
 	res.render("company_login");
 };
+
 /**
  *
  * @description student_login route
@@ -39,3 +40,13 @@ exports.company_login = (req, res) => {
 exports.student_login = (req, res) => {
 	res.render("student_login");
 };
+
+/**
+ *
+ * @description student_show route
+ * @method GET
+ */
+exports.student_show = (req, res) => {
+	res.render("show");
+};
+
