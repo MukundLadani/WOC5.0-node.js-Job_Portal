@@ -1,0 +1,83 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Jobify | Company Details</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+			integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+	</head>
+	<body>
+		<!-- <p id="student_details">Student Details</p> -->
+		<nav>
+			<a id="home" href="/"> Home </a>
+			<a id="slash" href="">|</a>
+			<a id="login" href="/Company_login">Company Login</a>
+			<a id="jobify"> #Jobify | Company details </a>
+		</nav>
+		<table class="table">
+			<thead class="thead-dark" id="Company_show">
+				<tr>
+					<th>Key</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Name</td>
+					<td><%= company[0].name%></td>
+				</tr>
+				<tr>
+					<td>email</td>
+					<td><%= company[0].email%></td>
+				</tr>
+				<tr>
+					<td>CPI criteria</td>
+					<td><%= company[0].cpi%></td>
+				</tr>
+				<tr>
+					<td>Age required</td>
+					<td><%= company[0].age%></td>
+				</tr>
+				<tr>
+					<td>Website</td>
+					<td><%= company[0].website%></td>
+				</tr>
+				<tr>
+					<td>Position</td>
+					<td><%= company[0].position%></td>
+				</tr>
+				<tr>
+					<td>Package</td>
+					<td><%= company[0].package%></td>
+				</tr>
+				<tr>
+					<td>Tech-stack</td>
+					<td><%= company[0].tech_stack %></td>
+				</tr>
+			</tbody>
+		</table>
+		<div id="outer">
+			<div class="inner">
+				<a href="/update_company?id=<%= company[0]._id %>" id="update_button">
+					Edit company</a
+				>
+			</div>
+			<div class="inner">
+				<a data-id="<%= company[0]._id %>" id="delete_button">
+					Delete company
+				</a>
+			</div>
+		</div>
+
+		<!-- include header -->
+		<%- include('include/index_footer') %>
+		<!-- /include header -->
+	</body>
+</html>

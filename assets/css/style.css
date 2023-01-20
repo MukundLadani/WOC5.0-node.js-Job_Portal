@@ -27,12 +27,14 @@ nav a {
 	font-family: cursive;
 	padding: 15px;
 	text-align: center;
+	font-size: 25px;
 	float: right;
 	color: rgb(255, 148, 90);
 }
 
 #jobify {
 	font-size: medium;
+	font-size: 25px;
 	color: rgb(169, 200, 231);
 }
 #home {
@@ -41,6 +43,19 @@ nav a {
 #home:hover {
 	color: blanchedalmond;
 	background-color: dimgrey;
+}
+
+#login {
+	float: left;
+}
+
+#login:hover {
+	color: blanchedalmond;
+	background-color: dimgrey;
+}
+
+#slash {
+	float: left;
 }
 
 /* Container needed to position the button. Adjust the width as needed */
@@ -62,18 +77,22 @@ nav a {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
-	background-color: transparent;
-	color: whitesmoke;
-	font-size: 16px;
+	background-color: #26114b;
+	color: rgb(255, 148, 90);
+	font-size: 25px;
+	font-family: cursive;
 	padding: 12px 24px;
 	border: solid;
-	border-color: whitesmoke;
+	border-color: rgb(169, 200, 231);
+	font-weight: bold;
 	cursor: pointer;
+	border-width: 2px;
 	border-radius: 5px;
 }
 
 .container .button:hover {
-	background-color: black;
+	background-color: transparent;
+	color: rgb(169, 200, 231);
 }
 
 img {
@@ -141,19 +160,6 @@ img {
 	font-weight: 600;
 	font-size: 14px;
 }
-
-/* #radiomale {
-	border: none;
-	width: 80%;
-	margin: 15px 0px;
-	border-bottom: 1px solid #4f30677d;
-	padding: opx;
-	width: 100%;
-	overflow: hidden;
-	background: transparent;
-	font-weight: 600;
-	font-size: 14px;
-} */
 
 label {
 	display: block;
@@ -251,62 +257,75 @@ label {
 	margin-top: -3px;
 }
 
+#student_details {
+	padding-top: 5px;
+	text-align: center;
+	font-family: cursive;
+	color: #26114b;
+	font-size: 20px;
+	font-weight: bolder;
+	/* background-color: rgb(165, 123, 255); */
+	padding: 20px;
+}
 
 table {
 	border-spacing: 0px;
 	width: 100%;
+	font-weight: bold;
+	font-family: cursive;
+	padding: 20px;
+	font-size: larger;
+}
+
+.table .thead-dark {
+	background-color: rgb(169, 200, 231);
 }
 
 .table td,
 .table th {
-	padding: 0.75em;
+	padding: 15px;
 	vertical-align: top;
 	text-align: center;
-	border-top: 1px solid var(--border);
+	border: 2px solid #000000;
+	/* border-top: 2px solid black; */
+	/* border-top: 1px solid var(--border); */
+	/* background-color: #b97bff; */
 }
 
-/* .table td > a.btn {
-	padding: 0.3em 1em;
-	font-size: 1.1em;
-	margin: 0 0.2em;
-} */
-
-.table tr:hover {
-	background-color: #06d6a0;
+.table th {
+	font-weight: bolder;
+	font-size: x-large;
+	color: white;
 }
 
-/* .table tr:hover td > a {
-	box-shadow: none;
-} */
-
-.table .thead-dark th {
-	color: #fff;
-	background-color: var(--dark);
-	border-color: #32383e;
+tr:nth-child(even) {
+	background-color: #e3e3e3;
 }
 
-@media only screen and (max-width: 1024px) {
-	table,
-	thead,
-	tbody,
-	th,
-	td,
-	tr {
-		display: block;
-	}
+#outer {
+	width: 100%;
+	text-align: center;
+}
+.inner {
+	display: inline-block;
+	padding: 10px;
+	padding-inline: 15px;
+}
 
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
+.inner a {
+	padding: 10px 30px;
+	border: 0 none;
+	cursor: pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 25px;
+	color: rgb(169, 200, 231);
+	background-color: #26114b;
+	font-weight: bolder;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
-	tr {
-		border: 1px solid var(--border);
-	}
-
-	td {
-		border: none;
-		position: relative;
-	}
+.inner a:hover {
+	color: rgb(242, 115, 47);
+	background-color: dimgrey;
 }

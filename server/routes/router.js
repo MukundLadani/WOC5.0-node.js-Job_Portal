@@ -10,12 +10,20 @@ route.get("/company", services.company);
 route.get("/student", services.student);
 route.get("/company_login", services.company_login);
 route.get("/student_login", services.student_login);
-route.get("/show", services.student_show);
+route.get("/student_show", services.student_show);
+route.get("/company_show", services.company_show);
 
 //API
-route.post("/api/users", controller.create);
-route.get("/api/users", controller.find);
-route.put("/api/users/:id", controller.update);
-route.delete("/api/users/:id", controller.delete);
+//student
+route.post("/api/students", controller.create);
+route.get("/api/students", controller.find);
+route.put("/api/students/:email", controller.update);
+route.delete("/api/students/:email", controller.delete);
+
+//company
+route.post("/api/companies", controller.createcompany);
+route.get("/api/companies", controller.findcompany);
+route.put("/api/companies/:email", controller.updatecompany);
+route.delete("/api/companies/:email", controller.deletecompany);
 
 module.exports = route;

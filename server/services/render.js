@@ -1,3 +1,5 @@
+const { default: axios } = require("axios");
+
 /**
  *
  * @description Root route
@@ -47,6 +49,36 @@ exports.student_login = (req, res) => {
  * @method GET
  */
 exports.student_show = (req, res) => {
-	res.render("show");
+	//Make a get request to /api/users
+	// console.log(String(req.query.email));
+	axios
+		.get("http://localhost:3000/api/students", {
+			params: { email: String(req.query.email) },
+		})
+		.then(function (studentdata) {
+			res.render("student_show", { student: studentdata.data });
+		})
+		.catch((err) => {
+			req.send(err);
+		});
 };
 
+/**
+ *
+ * @description company_show route
+ * @method GET
+ */
+exports.company_show = (req, res) => {
+	//Make a get request to /api/users
+	// console.log(String(req.query.email));
+	axios
+		.get("http://localhost:3000/api/companies", {
+			params: { email: String(req.query.email) },
+		})
+		.then(function (companydata) {
+			res.render("company_show", { company: companydata.data });
+		})
+		.catch((err) => {
+			req.send(err);
+		});
+};

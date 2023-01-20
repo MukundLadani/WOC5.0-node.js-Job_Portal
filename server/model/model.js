@@ -58,6 +58,10 @@ const company = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
+	age: {
+		type: Number,
+		required: true,
+	},
 	website: {
 		type: String,
 		required: true,
