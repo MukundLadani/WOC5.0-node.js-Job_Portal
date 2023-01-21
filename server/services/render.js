@@ -17,6 +17,7 @@ exports.homeRoutes = (req, res) => {
 exports.company = (req, res) => {
 	res.render("company");
 };
+
 /**
  *
  * @description student route
@@ -25,6 +26,7 @@ exports.company = (req, res) => {
 exports.student = (req, res) => {
 	res.render("student");
 };
+
 /**
  *
  * @description company_login route
@@ -49,7 +51,6 @@ exports.student_login = (req, res) => {
  * @method GET
  */
 exports.student_show = (req, res) => {
-	//Make a get request to /api/users
 	// console.log(String(req.query.email));
 	axios
 		.get("http://localhost:3000/api/students", {
@@ -59,7 +60,7 @@ exports.student_show = (req, res) => {
 			res.render("student_show", { student: studentdata.data });
 		})
 		.catch((err) => {
-			req.send(err);
+			res.send(err);
 		});
 };
 
@@ -69,7 +70,6 @@ exports.student_show = (req, res) => {
  * @method GET
  */
 exports.company_show = (req, res) => {
-	//Make a get request to /api/users
 	// console.log(String(req.query.email));
 	axios
 		.get("http://localhost:3000/api/companies", {
@@ -79,6 +79,41 @@ exports.company_show = (req, res) => {
 			res.render("company_show", { company: companydata.data });
 		})
 		.catch((err) => {
-			req.send(err);
+			res.send(err);
+		});
+};
+
+/**
+ *
+ * @description update_student route
+ * @method GET
+ */
+exports.update_student = (req, res) => {
+	axios
+		.get("http://localhost:3000/api/students", {
+			params: { id: req.query.id },
+		})
+		.then(function (studentdata) {
+			res.render("update_student", { student: studentdata.data });
+		})
+		.catch((err) => {
+			res.send(err);
+		});
+};
+/**
+ *
+ * @description update_company route
+ * @method GET
+ */
+exports.update_company = (req, res) => {
+	axios
+		.get("http://localhost:3000/api/companies", {
+			params: { id: req.query.id },
+		})
+		.then(function (companydata) {
+			res.render("update_company", { company: companydata.data });
+		})
+		.catch((err) => {
+			res.send(err);
 		});
 };

@@ -12,6 +12,8 @@ route.get("/company_login", services.company_login);
 route.get("/student_login", services.student_login);
 route.get("/student_show", services.student_show);
 route.get("/company_show", services.company_show);
+route.get("/update_student", services.update_student);
+route.get("/update_company", services.update_company);
 
 //API
 //student

@@ -93,6 +93,19 @@ exports.studentfind = (req, res) => {
 					.status(500)
 					.send({ message: "Error retrieving user with email" + email });
 			});
+	} else if (req.query.id) {
+		const id = req.query.id;
+		Studentdb.findById(id)
+			.then((data) => {
+				if (!data) {
+					res.status(404).send({ message: "No data for id : " + id });
+				} else {
+					res.send(data);
+				}
+			})
+			.catch((err) => {
+				res.status(500).send({ message: "Error" });
+			});
 	} else {
 		res
 			.status(500)
@@ -127,10 +140,6 @@ exports.studentupdate = (req, res) => {
 
 //delete a user with specified student id in the request
 exports.studentdelete = (req, res) => {
-	// user.remove({ _id: req.params.id }, function (err) {
-	// 	if (err) res.json(err);
-	// 	else res.redirect("/view");
-	// });
 	Studentdb.deleteOne({ _id: req.params.id }, function (err) {
 		if (err) {
 			res.status(404).send(err);
@@ -234,6 +243,19 @@ exports.findcompany = (req, res) => {
 				res
 					.status(500)
 					.send({ message: "Error retrieving user with email" + email });
+			});
+	} else if (req.query.id) {
+		const id = req.query.id;
+		Companydb.findById(id)
+			.then((data) => {
+				if (!data) {
+					res.status(404).send({ message: "No data for id : " + id });
+				} else {
+					res.send(data);
+				}
+			})
+			.catch((err) => {
+				res.status(500).send({ message: "Error" });
 			});
 	} else {
 		res
