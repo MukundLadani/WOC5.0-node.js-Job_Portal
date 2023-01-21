@@ -66,12 +66,15 @@
 		<div id="outer">
 			<div class="inner">
 				<a href="/update_company?id=<%= company[0]._id %>" id="update_button">
-					Edit company</a
+					Edit Company</a
 				>
 			</div>
 			<div class="inner">
-				<a data-id="<%= company[0]._id %>" id="delete_button">
-					Delete company
+				<a
+					href="/api/companies/delete/<%= company[0]._id %>"
+					id="delete_button"
+				>
+					Delete Company
 				</a>
 			</div>
 		</div>

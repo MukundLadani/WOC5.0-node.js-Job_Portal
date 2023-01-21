@@ -15,15 +15,15 @@ route.get("/company_show", services.company_show);
 
 //API
 //student
-route.post("/api/students", controller.create);
-route.get("/api/students", controller.find);
-route.put("/api/students/:email", controller.update);
-route.delete("/api/students/:email", controller.delete);
+route.post("/api/students", controller.studentcreate);
+route.get("/api/students", controller.studentfind);
+route.put("/api/students/:id", controller.studentupdate);
+route.get("/api/students/delete/:id", controller.studentdelete);
 
 //company
 route.post("/api/companies", controller.createcompany);
 route.get("/api/companies", controller.findcompany);
-route.put("/api/companies/:email", controller.updatecompany);
-route.delete("/api/companies/:email", controller.deletecompany);
+route.put("/api/companies/:id", controller.updatecompany);
+route.get("/api/companies/delete/:id", controller.deletecompany);
 
 module.exports = route;

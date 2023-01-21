@@ -2,7 +2,7 @@ var { Studentdb, Companydb } = require("../model/model");
 const { student } = require("../services/render");
 
 //create and save new student
-exports.create = (req, res) => {
+exports.studentcreate = (req, res) => {
 	//validate request
 	if (!req.body) {
 		res.status(400).send({ message: "Content cannot be empty!" });
@@ -21,8 +21,6 @@ exports.create = (req, res) => {
 						.status(404)
 						.send({ message: "Not found user with email:" + email });
 				} else {
-					console.log(password);
-					console.log(data[0].password);
 					if (data[0].password == password) {
 						res.redirect(`/student_show?email=${String(email)}`);
 					} else {
@@ -75,7 +73,7 @@ exports.create = (req, res) => {
 };
 
 //retrive and return a single student
-exports.find = (req, res) => {
+exports.studentfind = (req, res) => {
 	// console.log(req.query);
 	if (req.query.email) {
 		const email = req.query.email;
@@ -104,7 +102,7 @@ exports.find = (req, res) => {
 };
 
 //update a new identified user by student id
-exports.update = (req, res) => {
+exports.studentupdate = (req, res) => {
 	if (!req.body) {
 		return res.status(400).send({ message: "Data to update cannot be empty" });
 	}
@@ -128,21 +126,19 @@ exports.update = (req, res) => {
 };
 
 //delete a user with specified student id in the request
-exports.delete = (req, res) => {
-	const id = req.params.id;
-	Studentdb.findByIdAndDelete(id)
-		.then((data) => {
-			if (!data) {
-				res
-					.status(404)
-					.send({ message: `Cannot Delete with id:${id}. Maybe id is wrong!` });
-			} else {
-				res.send({ message: "User deleted successfully!" });
-			}
-		})
-		.catch((err) => {
-			res.status(500).send({ message: "Could not delete User with id=" + id });
-		});
+exports.studentdelete = (req, res) => {
+	// user.remove({ _id: req.params.id }, function (err) {
+	// 	if (err) res.json(err);
+	// 	else res.redirect("/view");
+	// });
+	Studentdb.deleteOne({ _id: req.params.id }, function (err) {
+		if (err) {
+			res.status(404).send(err);
+		} else {
+			res.send({ Message: "Student deleted successfully!" });
+			res.redirect("/");
+		}
+	});
 };
 
 //company api methods
@@ -273,18 +269,27 @@ exports.updatecompany = (req, res) => {
 
 //delete a user with specified company id in the request
 exports.deletecompany = (req, res) => {
-	const id = req.params.id;
-	Companydb.findByIdAndDelete(id)
-		.then((data) => {
-			if (!data) {
-				res
-					.status(404)
-					.send({ message: `Cannot Delete with id:${id}. Maybe id is wrong!` });
-			} else {
-				res.send({ message: "User deleted successfully!" });
-			}
-		})
-		.catch((err) => {
-			res.status(500).send({ message: "Could not delete User with id=" + id });
-		});
+	Companydb.deleteOne({ _id: req.params.id }, function (err) {
+		if (err) {
+			res.status(404).send(err);
+		} else {
+			// res.send({ Message: "Company deleted successfully!" });
+			// alert("Company deleted successfully!");
+			res.redirect("/");
+		}
+	});
+	// const id = req.params.id;
+	// Companydb.findByIdAndDelete(id)
+	// 	.then((data) => {
+	// 		if (!data) {
+	// 			res
+	// 				.status(404)
+	// 				.send({ message: `Cannot Delete with id:${id}. Maybe id is wrong!` });
+	// 		} else {
+	// 			res.send({ message: "User deleted successfully!" });
+	// 		}
+	// 	})
+	// 	.catch((err) => {
+	// 		res.status(500).send({ message: "Could not delete User with id=" + id });
+	// 	});
 };
