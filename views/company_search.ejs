@@ -1,0 +1,47 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Jobify | Companies Applicable</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+			integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+	</head>
+	<body>
+		<!-- <p id="student_details">Student Details</p> -->
+		<nav>
+			<a id="home" href="/"> Home </a>
+			<a id="slash" href="">|</a>
+			<a id="login" href="/Company_login">Company Login</a>
+			<a id="slash" href="">|</a>
+			<a id="login" href="/Student_login">Student Login</a>
+			<a id="jobify"> #Jobify | Companies Applicable </a>
+		</nav>
+		<div class="card-container">
+			<div class="card-row">
+				<%for(var i=0; i < company.length; i++) {%>
+				<div class="card">
+					<div class="card-header">
+						<h3><%= company[i].name%></h3>
+					</div>
+					<div class="card-body">
+						<h5>Website: <%= company[i].website%></h5>
+						<h5>Package: <%= company[i].package%></h5>
+						<h5>Position: <%= company[i].position%></h5>
+						<h5>Tech stack: <%= company[i].tech_stack %></h5>
+					</div>
+				</div>
+				<% } %>
+			</div>
+		</div>
+		<!-- include header -->
+		<%- include('include/index_footer') %>
+		<!-- /include header -->
+	</body>
+</html>

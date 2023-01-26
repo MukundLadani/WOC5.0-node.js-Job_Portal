@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=PT+Sans&display=swap");
+
 .column {
 	float: left;
 	width: 49%;
@@ -25,16 +27,16 @@ nav a {
 	text-decoration: none;
 	font-weight: 700;
 	font-family: cursive;
-	padding: 15px;
+	padding: 10px;
 	text-align: center;
-	font-size: 25px;
+	font-size: 18px;
 	float: right;
 	color: rgb(255, 148, 90);
 }
 
 #jobify {
 	font-size: medium;
-	font-size: 25px;
+	font-size: 18px;
 	color: rgb(169, 200, 231);
 }
 #home {
@@ -79,8 +81,8 @@ nav a {
 	-ms-transform: translate(-50%, -50%);
 	background-color: #26114b;
 	color: rgb(255, 148, 90);
-	font-size: 25px;
-	font-family: cursive;
+	font-size: 18px;
+	font-family: "Barlow", sans-serif;
 	padding: 12px 24px;
 	border: solid;
 	border-color: rgb(169, 200, 231);
@@ -260,21 +262,21 @@ label {
 #student_details {
 	padding-top: 5px;
 	text-align: center;
-	font-family: cursive;
+	font-family: "Barlow", sans-serif;
 	color: #26114b;
 	font-size: 20px;
 	font-weight: bolder;
 	/* background-color: rgb(165, 123, 255); */
-	padding: 20px;
+	padding: 10px;
 }
 
 table {
 	border-spacing: 0px;
 	width: 100%;
 	font-weight: bold;
-	font-family: cursive;
-	padding: 20px;
-	font-size: larger;
+	font-family: "Barlow", sans-serif;
+	padding: 10px;
+	font-size: 18px;
 }
 
 .table .thead-dark {
@@ -283,7 +285,7 @@ table {
 
 .table td,
 .table th {
-	padding: 15px;
+	padding: 10px;
 	vertical-align: top;
 	text-align: center;
 	border: 2px solid #000000;
@@ -305,6 +307,7 @@ tr:nth-child(even) {
 #outer {
 	width: 100%;
 	text-align: center;
+	margin-top: 20px;
 }
 .inner {
 	display: inline-block;
@@ -318,14 +321,95 @@ tr:nth-child(even) {
 	cursor: pointer;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-	font-size: 25px;
+	font-size: 18px;
 	color: rgb(169, 200, 231);
 	background-color: #26114b;
 	font-weight: bolder;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-family: "Barlow", sans-serif;
 }
 
 .inner a:hover {
 	color: rgb(242, 115, 47);
 	background-color: dimgrey;
+}
+
+/* CSS for search company */
+
+.card-container {
+	width: 90%;
+	margin: 40px auto;
+}
+
+.card-row {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	flex-flow: wrap;
+}
+
+.card {
+	width: 25%;
+	background: rgb(169, 200, 231);
+	border: 1px solid #ccc;
+	margin-bottom: 90px;
+	transition: 0.3s;
+	border-radius: 22px;
+}
+
+.card-header {
+	text-align: center;
+	padding: 15px 7px;
+	background: linear-gradient(to right, #26114b, #1d0a3d);
+	color: rgb(169, 200, 231);
+	font-family: "Barlow", sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.card-body {
+	padding: 25px;
+	text-align: center;
+	font-size: 15px;
+	font-family: cursive;
+	/* border-radius: 20px; */
+}
+
+.card-header:hover {
+	color: 26114b;
+	background: linear-gradient(to right, rgb(169, 200, 231), rgb(148, 190, 232));
+}
+
+.card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
+	background: linear-gradient(to right, #26114b, #1d0a3d);
+	color: blanchedalmond;
+}
+
+/* .card-body:hover {
+	background: linear-gradient(to right, #26114b, #1d0a3d);
+	color: rgb(169, 200, 231);
+} */
+
+@media screen and (max-width: 1000px) {
+	.card {
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 620px) {
+	.container {
+		width: 100%;
+	}
+
+	.heading {
+		padding: 20px;
+		font-size: 20px;
+	}
+
+	.card {
+		width: 80%;
+	}
 }

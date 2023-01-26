@@ -1,5 +1,6 @@
 var { Studentdb, Companydb } = require("../model/model");
 const { student } = require("../services/render");
+const { default: axios } = require("axios");
 
 //create and save new student
 exports.studentcreate = (req, res) => {
@@ -19,7 +20,7 @@ exports.studentcreate = (req, res) => {
 				if (!data) {
 					res
 						.status(404)
-						.send({ message: "Not found user with email:" + email });
+						.send({ message: "Not found user with email: " + email });
 				} else {
 					if (data[0].password == password) {
 						res.redirect(`/student_show?email=${String(email)}`);
@@ -32,7 +33,7 @@ exports.studentcreate = (req, res) => {
 			.catch((err) => {
 				res
 					.status(500)
-					.send({ message: "Error retrieving user with email" + email });
+					.send({ message: "Error retrieving user with email: " + email });
 			});
 		return;
 	} else if (req.body.password != req.body.confirm_password) {
@@ -83,7 +84,7 @@ exports.studentfind = (req, res) => {
 				if (!data) {
 					res
 						.status(404)
-						.send({ message: "Not found user withd email:" + email });
+						.send({ message: "Not found user withd email: " + email });
 				} else {
 					res.send(data);
 				}
@@ -91,7 +92,7 @@ exports.studentfind = (req, res) => {
 			.catch((err) => {
 				res
 					.status(500)
-					.send({ message: "Error retrieving user with email" + email });
+					.send({ message: "Error retrieving user with email: " + email });
 			});
 	} else if (req.query.id) {
 		const id = req.query.id;
@@ -169,7 +170,7 @@ exports.createcompany = (req, res) => {
 				if (!data) {
 					res
 						.status(404)
-						.send({ message: "Not found user with email:" + email });
+						.send({ message: "Not found user with email: " + email });
 				} else {
 					if (data[0].password == password) {
 						res.redirect(`/company_show?email=${String(email)}`);
@@ -182,7 +183,7 @@ exports.createcompany = (req, res) => {
 			.catch((err) => {
 				res
 					.status(500)
-					.send({ message: "Error retrieving user with email" + email });
+					.send({ message: "Error retrieving user with email " + email });
 			});
 		return;
 	} else if (req.body.password != req.body.confirm_password) {
@@ -234,7 +235,7 @@ exports.findcompany = (req, res) => {
 				if (!data) {
 					res
 						.status(404)
-						.send({ message: "Not found user withd email:" + email });
+						.send({ message: "Not found user withd email: " + email });
 				} else {
 					res.send(data);
 				}
@@ -242,7 +243,7 @@ exports.findcompany = (req, res) => {
 			.catch((err) => {
 				res
 					.status(500)
-					.send({ message: "Error retrieving user with email" + email });
+					.send({ message: "Error retrieving user with email " + email });
 			});
 	} else if (req.query.id) {
 		const id = req.query.id;
@@ -258,9 +259,17 @@ exports.findcompany = (req, res) => {
 				res.status(500).send({ message: "Error" });
 			});
 	} else {
-		res
-			.status(500)
-			.send({ message: "Request query doesn't have email in it!" });
+		Companydb.find()
+			.then((company) => {
+				// console.log(company);
+				res.send(company);
+			})
+			.catch((err) => {
+				res.status(500).send({
+					message:
+						err.message || "Error Occurred while retriving company information",
+				});
+			});
 		return;
 	}
 };
