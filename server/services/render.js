@@ -142,7 +142,7 @@ exports.search_company = (req, res) => {
 	}
 	// console.log(req.query);
 	const { cpi, age } = req.query;
-	console.log({ cpi, age });
+
 	axios
 		.get("http://localhost:3000/api/companies")
 		.then(function (response) {
@@ -160,7 +160,6 @@ exports.search_company = (req, res) => {
 
 			if (object.length == 0) {
 				res.send({ message: "There is no company for this student" });
-				// res.render("oops");
 			} else {
 				res.render("company_search", { company: object });
 			}

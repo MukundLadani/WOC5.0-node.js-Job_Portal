@@ -17,6 +17,12 @@
 	display: table;
 }
 
+footer {
+	text-align: center;
+	margin-top: 30px;
+	color: #26114b;
+}
+
 nav {
 	margin-top: 10px;
 	background-color: #26114b;
