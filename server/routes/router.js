@@ -22,12 +22,12 @@ route.get("/search_company", services.search_company);
 route.post("/api/students", controller.studentcreate);
 route.get("/api/students", controller.studentfind);
 route.put("/api/students/:id", controller.studentupdate);
-route.get("/api/students/delete/:id", controller.studentdelete);
+route.delete("/api/students/delete/:id", controller.studentdelete);
 
 //company
 route.post("/api/companies", controller.createcompany);
 route.get("/api/companies", controller.findcompany);
 route.put("/api/companies/:id", controller.updatecompany);
-route.get("/api/companies/delete/:id", controller.deletecompany);
+route.delete("/api/companies/delete/:id", controller.deletecompany);
 
 module.exports = route;

@@ -51,7 +51,7 @@ exports.student_login = (req, res) => {
  * @method GET
  */
 exports.student_show = (req, res) => {
-	// console.log(String(req.query.email));
+	console.log(String(req.query.email));
 	axios
 		.get("http://localhost:3000/api/students", {
 			params: { email: String(req.query.email) },
@@ -141,7 +141,7 @@ exports.search_company = (req, res) => {
 		return;
 	}
 	// console.log(req.query);
-	const { cpi, age } = req.query;
+	const { email, cpi, age } = req.query;
 
 	axios
 		.get("http://localhost:3000/api/companies")
@@ -157,7 +157,7 @@ exports.search_company = (req, res) => {
 					object.push(companies[i]);
 				}
 			}
-
+			object.push(email);
 			if (object.length == 0) {
 				res.send({ message: "There is no company for this student" });
 			} else {

@@ -20,7 +20,7 @@ exports.studentcreate = (req, res) => {
 				if (!data) {
 					res
 						.status(404)
-						.send({ message: "Not found user with email: " + email });
+						.send({ message: "Not found student with email: " + email });
 				} else {
 					if (data[0].password == password) {
 						res.redirect(`/student_show?email=${String(email)}`);
@@ -33,7 +33,7 @@ exports.studentcreate = (req, res) => {
 			.catch((err) => {
 				res
 					.status(500)
-					.send({ message: "Error retrieving user with email: " + email });
+					.send({ message: "Error retrieving student with email: " + email });
 			});
 		return;
 	} else if (req.body.password != req.body.confirm_password) {
@@ -84,7 +84,7 @@ exports.studentfind = (req, res) => {
 				if (!data) {
 					res
 						.status(404)
-						.send({ message: "Not found user withd email: " + email });
+						.send({ message: "Not found student with email: " + email });
 				} else {
 					res.send(data);
 				}
@@ -92,7 +92,7 @@ exports.studentfind = (req, res) => {
 			.catch((err) => {
 				res
 					.status(500)
-					.send({ message: "Error retrieving user with email: " + email });
+					.send({ message: "Error retrieving student with email: " + email });
 			});
 	} else if (req.query.id) {
 		const id = req.query.id;
@@ -126,7 +126,7 @@ exports.studentupdate = (req, res) => {
 		.then((data) => {
 			if (!data) {
 				res.status(404).send({
-					message: `Cannot Update user with ${id}. Maybe user not found!`,
+					message: `Cannot Update student with ${id}. Maybe student not found!`,
 				});
 			} else {
 				res.send(data);
@@ -135,20 +135,32 @@ exports.studentupdate = (req, res) => {
 		.catch((err) => {
 			res
 				.status(500)
-				.send({ message: "Error occured while updating user information" });
+				.send({ message: "Error occured while updating student information" });
 		});
 };
 
 //delete a user with specified student id in the request
 exports.studentdelete = (req, res) => {
-	Studentdb.deleteOne({ _id: req.params.id }, function (err) {
-		if (err) {
-			res.status(404).send(err);
-		} else {
-			res.send({ Message: "Student deleted successfully!" });
-			res.redirect("/");
-		}
-	});
+	id = req.params.id;
+	// console.log(id);
+	Studentdb.findByIdAndDelete(id)
+		.then((data) => {
+			if (!data) {
+				res.status(404).send({
+					message: `Cannot Delete student with ${id}. Maybe student not found!`,
+				});
+			} else {
+				res.send({
+					message: "Student was deleted successfully!",
+				});
+				// res.redirect("/student_login");
+			}
+		})
+		.catch((err) => {
+			res
+				.status(500)
+				.send({ message: "Could not delete student with id=" + id });
+		});
 };
 
 //company api methods
@@ -170,7 +182,7 @@ exports.createcompany = (req, res) => {
 				if (!data) {
 					res
 						.status(404)
-						.send({ message: "Not found user with email: " + email });
+						.send({ message: "Not found company with email: " + email });
 				} else {
 					if (data[0].password == password) {
 						res.redirect(`/company_show?email=${String(email)}`);
@@ -183,7 +195,7 @@ exports.createcompany = (req, res) => {
 			.catch((err) => {
 				res
 					.status(500)
-					.send({ message: "Error retrieving user with email " + email });
+					.send({ message: "Error retrieving company with email " + email });
 			});
 		return;
 	} else if (req.body.password != req.body.confirm_password) {
@@ -235,7 +247,7 @@ exports.findcompany = (req, res) => {
 				if (!data) {
 					res
 						.status(404)
-						.send({ message: "Not found user withd email: " + email });
+						.send({ message: "Not found company with email: " + email });
 				} else {
 					res.send(data);
 				}
@@ -243,7 +255,7 @@ exports.findcompany = (req, res) => {
 			.catch((err) => {
 				res
 					.status(500)
-					.send({ message: "Error retrieving user with email " + email });
+					.send({ message: "Error retrieving company with email " + email });
 			});
 	} else if (req.query.id) {
 		const id = req.query.id;
@@ -285,7 +297,7 @@ exports.updatecompany = (req, res) => {
 		.then((data) => {
 			if (!data) {
 				res.status(404).send({
-					message: `Cannot Update user with ${id}. Maybe user not found!`,
+					message: `Cannot Update company with ${id}. Maybe company not found!`,
 				});
 			} else {
 				res.send(data);
@@ -300,27 +312,20 @@ exports.updatecompany = (req, res) => {
 
 //delete a user with specified company id in the request
 exports.deletecompany = (req, res) => {
-	Companydb.deleteOne({ _id: req.params.id }, function (err) {
-		if (err) {
-			res.status(404).send(err);
-		} else {
-			// res.send({ Message: "Company deleted successfully!" });
-			// alert("Company deleted successfully!");
-			res.redirect("/");
-		}
-	});
-	// const id = req.params.id;
-	// Companydb.findByIdAndDelete(id)
-	// 	.then((data) => {
-	// 		if (!data) {
-	// 			res
-	// 				.status(404)
-	// 				.send({ message: `Cannot Delete with id:${id}. Maybe id is wrong!` });
-	// 		} else {
-	// 			res.send({ message: "User deleted successfully!" });
-	// 		}
-	// 	})
-	// 	.catch((err) => {
-	// 		res.status(500).send({ message: "Could not delete User with id=" + id });
-	// 	});
+	const id = req.params.id;
+	Companydb.findByIdAndDelete(id)
+		.then((data) => {
+			if (!data) {
+				res
+					.status(404)
+					.send({ message: `Cannot Delete with id:${id}. Maybe id is wrong!` });
+			} else {
+				res.send({ message: "Company deleted successfully!" });
+			}
+		})
+		.catch((err) => {
+			res
+				.status(500)
+				.send({ message: "Could not delete Company with id=" + id });
+		});
 };

@@ -52,21 +52,36 @@ $("#update_company").submit(function (event) {
 // 	alert("Student successfully signed in!");
 // });
 
-// if (window.location.pathname == "/student_show") {
-// 	$ondelete = $("delete_stud");
-// 	$ondelete.click(function () {
-// 		var id = $(this).attr("data-id");
+$(document).on("click", ".delete_student", function () {
+	var id = $(this).attr("data-id");
+	console.log(id);
 
-// 		var request = {
-// 			url: `http://localhost:3000/api/students/${id}`,
-// 			method: "DELETE",
-// 		};
+	var request = {
+		url: `http://localhost:3000/api/students/delete/${id}`,
+		method: "DELETE",
+	};
 
-// 		if (confirm("Do you really want to delete this record?")) {
-// 			$.ajax(request).done(function (response) {
-// 				alert("Student details deleted successully!");
-// 				location.pathname = "/";
-// 			});
-// 		}
-// 	});
-// }
+	if (confirm("Do you really want to delete this record?")) {
+		$.ajax(request).done(function (response) {
+			alert("Student details deleted successully!");
+			location.pathname = "/student_login";
+		});
+	}
+});
+
+$(document).on("click", ".delete_company", function () {
+	var id = $(this).attr("data-id");
+	console.log(id);
+
+	var request = {
+		url: `http://localhost:3000/api/companies/delete/${id}`,
+		method: "DELETE",
+	};
+
+	if (confirm("Do you really want to delete this record?")) {
+		$.ajax(request).done(function (response) {
+			alert("Company details deleted successully!");
+			location.pathname = "/company_login";
+		});
+	}
+});

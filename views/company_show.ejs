@@ -18,7 +18,7 @@
 		<nav>
 			<a id="home" href="/"> Home </a>
 			<a id="slash" href="">|</a>
-			<a id="login" href="/Company_login">Company Login</a>
+			<a id="login" href="/Company_login">Back to company login</a>
 			<a id="jobify"> #Jobify | Company details </a>
 		</nav>
 		<table class="table">
@@ -70,10 +70,7 @@
 				>
 			</div>
 			<div class="inner">
-				<a
-					href="/api/companies/delete/<%= company[0]._id %>"
-					id="delete_button"
-				>
+				<a data-id="<%= company[0]._id %>" class="delete_company">
 					Delete Company
 				</a>
 			</div>
