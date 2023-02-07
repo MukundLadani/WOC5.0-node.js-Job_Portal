@@ -23,6 +23,8 @@ $("#update-student").submit(function (event) {
 	$.ajax(request).done(function (response) {
 		alert("Data Updated Successfully!");
 	});
+
+	location.replace(`/student_show?email=${data.email}`);
 });
 
 $("#update_company").submit(function (event) {
@@ -46,6 +48,8 @@ $("#update_company").submit(function (event) {
 	$.ajax(request).done(function (response) {
 		alert("Data Updated Successfully!");
 	});
+
+	location.replace(`/company_show?email=${data.email}`);
 });
 
 // $("#studend_signup").submit(function (event) {
