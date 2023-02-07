@@ -26,6 +26,7 @@
 			<a id="login" href="/Student_login">Student Login</a> -->
 			<a id="jobify"> #Jobify | Companies Applicable </a>
 		</nav>
+		<% if(company.length!=1){%>
 		<div class="card-container">
 			<div class="card-row">
 				<%for(var i=0; i < company.length-1; i++) {%>
@@ -43,6 +44,19 @@
 				<% } %>
 			</div>
 		</div>
+		<% } else{%>
+		<div class="card-container">
+			<div class="card-row">
+				<div class="card">
+					<div class="card-header">
+						<h3>Sorry!</h3>
+					</div>
+					<div class="card-body">
+						<h5>No Companies found for this student</h5>
+					</div>
+				</div>
+			</div>
+		<%}%>
 		<!-- include header -->
 		<%- include('include/index_footer') %>
 		<!-- /include header -->
