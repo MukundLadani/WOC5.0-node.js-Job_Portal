@@ -15,7 +15,7 @@ $("#update-student").submit(function (event) {
 	console.log(data);
 
 	var request = {
-		url: `http://localhost:3000/api/students/${data.id}`,
+		url: `/api/students/${data.id}`,
 		method: "PUT",
 		data: data,
 	};
@@ -40,7 +40,7 @@ $("#update_company").submit(function (event) {
 	console.log(data);
 
 	var request = {
-		url: `http://localhost:3000/api/companies/${data.id}`,
+		url: `/api/companies/${data.id}`,
 		method: "PUT",
 		data: data,
 	};
@@ -61,7 +61,7 @@ $(document).on("click", ".delete_student", function () {
 	console.log(id);
 
 	var request = {
-		url: `http://localhost:3000/api/students/delete/${id}`,
+		url: `/api/students/delete/${id}`,
 		method: "DELETE",
 	};
 
@@ -78,7 +78,7 @@ $(document).on("click", ".delete_company", function () {
 	console.log(id);
 
 	var request = {
-		url: `http://localhost:3000/api/companies/delete/${id}`,
+		url: `/api/companies/delete/${id}`,
 		method: "DELETE",
 	};
 
